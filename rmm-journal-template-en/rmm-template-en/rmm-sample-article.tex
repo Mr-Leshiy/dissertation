@@ -1,0 +1,409 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                           %%
+%%                  Template file for the paper in                           %%
+%%              Researches in Mathematics and Mechanics                      %%
+%%                                                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                           %%
+%%                    !!!!   IMPORTANT  !!!!                                 %%
+%%  Do not use in this document command                                      %%
+%%    \pagestyle                                                             %%
+%%                                                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%%     Specify contact details of the each author:
+%%         Full name
+%%         Affiliation
+%%         Correspondence address (e-mail required), phone number.
+%%
+%%     Clearly specify primary contact person.
+%%
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, twoside]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{bold-extra}
+\usepackage{ifthen}
+
+\usepackage{rmmstyle}
+
+\renewcommand{\CopyName}{% Author's initials and surname in the source language
+		A.~A.~Author1, A.~A.~Author2%
+                         }
+\renewcommand{\CopyNameCopy}{% Author's surname and initials in the source language
+		Author1 A. A., Author2 A. A.%
+                         }
+\renewcommand{\udk}{% Code the subject of your paper using UDC - Universal Decimal Classification
+		\small\textup{UDC XXX.XX}%
+                         }
+\renewcommand{\msc}{% Code the subject of your paper using MSC - 2010 Mathematics Subject Classification
+                {MSC: XXXXX, YYYYY, ZZZZZ}%
+                            }
+\renewcommand{\CopyNameUkr}{% Author's surname and initials in Ukrainian
+		Author1 A. A., Author2 A. A.%
+                            }
+\renewcommand{\CopyNameEng}{% Author's surname and initials in English
+		Author1 A. A., Author2 A. A.%
+                            }
+\renewcommand{\CopyNameRus}{% Author's surname and initials in Russian
+		Author1 A. A., Author2 A. A.%
+                            }
+\renewcommand{\WorkPlace}{\small{% Author's affiliation
+		Author's affiliation}%
+                         }
+\renewcommand{\tit}{% Original title of your paper (CAPITAL LETTERS)
+		TITLE OF THE PAPER%
+                    }
+\renewcommand{\TitUkr}{% Title of your paper in Ukrainian
+		����� ������%
+                        }
+\renewcommand{\TitEng}{% Title of your paper in English
+		Title of the paper%
+                        }
+\renewcommand{\TitRus}{% Title of your paper in Russian
+		�������� ������%
+                        }
+\renewcommand{\ShortTit}{% Shortened title of your paper (no more then 40 symbols)
+		Title%
+                         }
+\renewcommand{\Thanks}{\small{% Acknowledgments, sources of funding, presentation of the results
+                             %
+                             }}			     
+\renewcommand{\AbstractUkr}{% Abstract of the paper in Ukrainian, at least 100 words
+     ��� ��� ���� ����� �������� ����������� �����.
+     ʳ����c�� ���� � ������ --- �� ����� 100 ����.
+     ��� ��� ���� ����� �������� ����������� �����.
+     ʳ����c�� ���� � ������ --- �� ����� 100 ����.
+     ��� ��� ���� ����� �������� ����������� �����.
+     ʳ����c�� ���� � ������ --- �� ����� 100 ����.
+     ��� ��� ���� ����� �������� ����������� �����.
+     ʳ����c�� ���� � ������ --- �� ����� 100 ����.
+     ��� ��� ���� ����� �������� ����������� �����.
+     ʳ����c�� ���� � ������ --- �� ����� 100 ����.
+     ��� ��� ���� ����� �������� ����������� �����.
+     ʳ����c�� ���� � ������ --- �� ����� 100 ����.
+}
+\renewcommand{\AbstractEng}{% Abstract of the paper in English, at least 100 words
+      And on this place will be the abstract of paper in English.
+      The abstract should contain at least 100 words.
+      And on this place will be the abstract of paper in English.
+      The abstract should contain at least 100 words.
+      And on this place will be the abstract of paper in English.
+      The abstract should contain at least 100 words.
+      And on this place will be the abstract of paper in English.
+      The abstract should contain at least 100 words.
+      And on this place will be the abstract of paper in English.
+      The abstract should contain at least 100 words.
+      And on this place will be the abstract of paper in English.
+      The abstract should contain at least 100 words.
+}
+\renewcommand{\AbstractRus}{% Abstract of the paper in Russian, at least 100 words
+      �� ���� ����� ������ ���� ����� ��������� �� ������� �����.
+      ���������� ���� --- �� ����� 100.
+      �� ���� ����� ������ ���� ����� ��������� �� ������� �����.
+      ���������� ���� --- �� ����� 100.
+      �� ���� ����� ������ ���� ����� ��������� �� ������� �����.
+      ���������� ���� --- �� ����� 100.
+      �� ���� ����� ������ ���� ����� ��������� �� ������� �����.
+      ���������� ���� --- �� ����� 100.
+      �� ���� ����� ������ ���� ����� ��������� �� ������� �����.
+      ���������� ���� --- �� ����� 100.
+      �� ���� ����� ������ ���� ����� ��������� �� ������� �����.
+      ���������� ���� --- �� ����� 100.
+}
+\renewcommand{\KeyWordsUkr}{\\ {������� �����: \ }% Keywords in Ukrainian.
+		������1, ������2, ������3, ������4, ������5, ������6, ������7, ������8%
+			\vspace{-0.1cm}
+			   }
+\renewcommand{\KeyWords}{\\ {Key words:\ }% Keywords in English
+		keyword1, keyword2, keyword3, keyword4, keyword5, keyword6, keyword7, keyword8%
+                        }
+\renewcommand{\KeyWordsRus}{\\ {�������� �����: \ }% Keywords in Russian
+		������1, ������2, ������3, ������4, ������5, ������6, ������7, ������8%
+			\vspace{-0.5cm}
+			   }
+\setcounter{firstpage}{\thepage}
+
+\markboth{{\NAME}}{{\rightheadtext}}
+
+\setcounter{LANG}{0}
+
+\begin{document}
+
+\renewcommand{\refname}{\refnam}
+\makemytitle
+
+\Introduct
+Here the text of the article begins. The introduction should contain a general statement
+of the problem, it's connection with important scientific or practical problems; 
+analysis of recent researches and publications, which are devoted to solving this
+problems; the wording of paper's purposes.
+
+If you want, you can bring here some auxiliary results which are needed in further.
+
+\begin{definition}[]
+\textsc{\cite{Kilb}}
+Text of definition.
+\end{definition}
+
+In the text you can refer to sources from the bibliography with the command
+\textit{\textbf{$\backslash$cite\{Kilb, Arestov2\}}}. It will be printed as follows: 
+\cite {Kilb,Arestov2}.
+
+\MainResultsWithoutPeriod
+
+This section contains the main results of research with the full justification of scientific results.
+You can divide your text into subsections as follows:
+
+\textbf{1. Title of the section.}
+
+\textbf{1.1. Title of the subsection.}
+Text of the subsection should begin in the same line as the title of subsection.
+
+Important formulas should be numbered (within the command \textit{\textbf{$\backslash$eqno(n)}} 
+or using automatic enumeration):
+$$
+\dot{x}=\varepsilon X(t,x),
+\eqno(1)
+$$
+where $x$ is an $n$-dimensional vector, $\varepsilon > 0$ --- small parameter,
+$X$ is an $n$-dimensional vector-function, time $t \in I = \left[0, L\varepsilon^{-1} \right]$.
+
+You can draw up bulky formulas more compact using the environment \textit{\textbf{array}}
+$$
+\begin{array}{c}
+\varepsilon
+\left\|
+ \int\limits^{t}_{0}
+  \varphi(s,y(s)) ds
+\right\|
+\leqslant
+\varepsilon
+\left\|
+ \sum\limits_{i=0}^{k-1}
+  \int\limits^{t_{i+1}}_{t_i}
+    \left [
+      \varphi(s,y(s)) - \varphi(s,y_i)
+    \right ] ds
+  +
+  \right.
+  \\
+  \left.
+  +
+  \int\limits^{t}_{t_k}
+      \varphi(s,y(s)) ds
+  +
+ \sum\limits_{i=0}^{k-1}
+  \int\limits^{t_{i+1}}_{t_i}
+      \varphi(s,y_i) ds
+\right\|
+\leqslant
+\\
+\leqslant
+\varepsilon
+ \sum\limits_{i=0}^{k-1}
+  \int\limits^{t_{i+1}}_{t_i}
+   \left\|
+      \varphi(s,y(s)) - \varphi(s,y_i)
+    \right \| ds
+  +
+  \varepsilon
+  \int\limits^{t}_{t_k}
+   \left\|
+      \varphi(s,y(s))
+    \right \| ds
+  +\\+
+ \varepsilon
+ \sum\limits_{i=0}^{k-1}
+    \left\|
+    \int\limits^{t_{i+1}}_{t_i}
+      \varphi(s,y_i) ds
+    \right\|.
+\end{array}
+\eqno(2)
+$$
+
+
+To formulate a theorem use environment \textit{\textbf{theorem}}
+
+\begin{theorem}[theorem's title] \textsc{\cite{Kilb}}
+\label{t-1.1}
+Let us \dots
+
+Formulation of the theorem.
+\end{theorem}
+
+\proof
+Place your proof after the command \textit{\textbf{$\backslash$proof}}.
+
+... which concludes the proof.
+
+\begin{remark}
+If you want to note something important, use environment \textit{\textbf{remark}}.
+\end{remark}
+
+\begin{lemma*}
+\label{t-1.2}
+\textsc{\cite{Arestov2}}
+To formulate a lemma use environment \textit{\textbf{lemma}} or
+\textit{\textbf{lemma*}}.
+\end{lemma*}
+
+
+\begin{consequence*}
+To formulate a corollary use environmaent \textit{\textbf{consequence}} ��� \textit{\textbf{consequence*}}.
+
+\end{consequence*}
+
+\begin{example}
+To formulate an example use environment \textit{\textbf{example}} or
+\textit{\textbf{example*}}.
+\end{example}
+
+If you have a need to insert a graphic into your work, use the command 
+$\backslash$includegra\-phics inside the environment {\bf figure}. 
+With this command, you can insert the image in .png, .jpeg, .pdf, and .eps formats.
+
+\begin{figure}[th!]
+\includegraphics[width=1in, height=1in]{taj_mahal}\\
+\centerline{Fig. 1. Caption of the figure}
+\end{figure}
+
+\includegraphics[width=1.5in, height=0.75in, angle=20]{taj_mahal}
+
+\begin{multicols}{2}
+
+We offer you to simulate text wrap by placing the text and image in two
+columns: open environment {\bf multicols} with argument \{2\}, then insert the
+image.  You should choose the right amount of the text to ``balance'' the
+size of the figure in the next column.  If you are not satisfied with the
+spacing between section 2 and section columns in one column, use the vertical
+displacements commands.
+
+\begin{center}
+	\includegraphics[scale=0.38]{onulogo.eps}\\	
+	Fig. 3. Caption of the third figure
+\end{center}
+
+\end{multicols}
+
+Unfortunately, in this case will not work the {\bf figure} environment and,
+consequently, will not be able to use the command $\backslash$caption. 
+However, the caption can be placed in plain text, centered below the image.
+
+\Conclusion
+This section presents the conclusion of this study and the prospects for further
+research in this direction.
+
+
+\renewcommand{\refname}{}
+
+{\footnotesize
+\begin{thebibliography}{99}
+
+\bibitem{Kilb}
+\textbf{ ����� �. �.}
+��������� � ����������� ��������
+������� � ��������� �� ���������� / �. �. ����� , �. �. ������ , �. �. �������. --  �����:  ����� � �������, 1987. -- 688 c.
+
+\bibitem{Arestov2}
+\textbf{ ������� �. �.} 
+�� ������������ ������������ ��� ������������������ ��������� � �� ����������� / �. �. �������
+// ���. �� ����. ���. �����. -- 1981. -- T.~45. -- C.  3--22.
+
+\bibitem{Ficht2}
+\textbf{  ����������� �. �. }
+���� ����������������� � ������������� ����������. / �. �. �����������. �.II. -- �.: ���������, 2001. -- 810 c.
+
+\bibitem{Grandshtain}
+\textbf{����������  �. �.}
+������� ����������, ���� � ������������ / �. �. ����������, �. �. �����. -- �.: �����, 1963. --  1100 �.
+
+\bibitem{Storoshenko1}
+\textbf{ ���������� �. �.} 
+� ����� ������
+������ � ����� �������� � ��� �����������~/ �. �. ����������
+// �����. �������. -- 1996. -- �. 187, � 5. -- C. 111--120.
+
+\bibitem{Stor_Kov}
+\textbf{ ���������� �. �.}
+����������� ���
+������� ���������� ����������� ��������� � $L_0$ / �. �. ����������,
+�. �. ��������� // �����. ���. -- 2014. -- �. 96, � 4.~-- C. 633--636.
+
+\bibitem{Borwein} 
+\textbf{  Borwein P.}
+Polynomials and polynomial inequalities / P. Borwein, T. Erdelyi. --
+ N.--Y.: Springer-Verlag, 1995. -- 482 �.
+
+\bibitem{Polia}
+\textbf{  ����� �. }
+������ � ������� �� ������� / �.~�����, �.~����. �. I -- �.: �����,
+ 1978.~-- 391 �.
+
+\end{thebibliography}
+}
+
+\AuxAbstract
+
+\renewcommand{\refname}{\indent\normalsize\textsc{References}}
+
+
+{\footnotesize
+\begin{thebibliography}{99}
+
+\bibitem{Kilb}
+{Samko, S. G., Kilbas, A. A. and Marichev, O. I. (1987). {\it Integraly i proizvodnye drobnoho poryadka i nekotorye 
+ih prilozheniya [Fractional integrals and derivatives with some applications]}.}
+Minsk: Nauka i tekhnika, 688 p.
+
+\bibitem{Arestov2}
+Arestov, V. V. (1981). 
+Ob integralnykh neravenstvakh dlya trigonometricheskikh polinomov i ikh proizvodnykh
+[About integral inequalities for trigonometrical polynomials and theirs derivatives].
+\textit{Izv. AN USSR. Ser. matem.}, Vol. 45, P. 3--22.
+
+\bibitem{Ficht2}
+Fikhtengolz, G. M. (2001). \textit{Kurs differentsialnogo i integralnogo ischisleniya 
+[A Course of Differential and Integral Calculus], Vol. II.}  Moscow: Fizmatlit,  810 p.
+
+\bibitem{Grandshtain}
+Gradshtein, I. S., Ryzhyk, I. M. (1963). 
+\textit{Tablitsy sntegralov, sum i  proizvedeniy [Tables of integrals, sums and derivatives]}.
+Moscow: GITTL, 1100 p.
+
+\bibitem{Storoshenko1}
+Storozhenko, E. A. (1996). {K odnoi zadache Malera o nulyakh polinoma i ego proizvodnoy 
+[For one Mahler's prooblem about zeros of polinomial and its derivative].}  
+\textit{Matem. sbornik}, Vol. 187, �5, P. 111--120.
+
+\bibitem{Stor_Kov}
+Storozhenko, E. A., Kovakenko, L. G. (2014).
+Neravenstvo dlya drobnykh integralov kompleksnykh polinomov v $L_0$
+[An inequality for fractional order integrals of complex-valued polynomials in $_0$].
+\textit{Matem. zapiski}, Vol. 96, �4. -- P. 633--636.
+
+\bibitem{Borwein} 
+Borwein, P., Erdelyi, T. (1995). \textit{Polynomials and polynomial inequalities} 
+New York: Springer-Verlag, 482 p.
+
+\bibitem{Polia}
+Polia, G., Sege, G. (1978). \textit{Zadachi i teoremy iz analiza [Problems and theorems from calculus], Vol I.}
+Moscow: Nauka, 391 p.
+
+
+\end{thebibliography}
+}
+
+\end{document}

@@ -1,0 +1,311 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    о с н о в н о й   с т и л е в о й   ф а й л  журнала 
+%%       Вестиник ОНУ. Математика и механика
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%\usepackage{./InitNumOfZhurn}
+
+
+\textheight=200mm
+\textwidth=130mm
+\headsep=4mm   
+
+\date{}       
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{firstpage}
+\setcounter{firstpage}{0}
+
+\newcounter{lpage}
+\setcounter{lpage}{0}
+
+\newcounter{chapter}
+\setcounter{chapter}{0}
+
+\newcounter{prepage}[chapter]
+\setcounter{prepage}{0}
+
+\newcounter{lastpage}[chapter]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{LANG}     
+\setcounter{LANG}{0}
+
+\newcommand{\newpag}{
+	\newpage%
+	\setcounter{prepage}{0}% 
+	\setcounter{theorem}{0}% 
+	\setcounter{lemma}{0}% 
+	\setcounter{consequence}{0}%
+        \setcounter{definition}{0}% 
+	\setcounter{remark}{0}%
+	\setcounter{example}{0}%
+	\setcounter{equation}{0}%
+}
+
+\newcommand{\pageno}[1]{\setcounter{page}{#1}}
+\newlength{\parskipbackup}
+
+\newcommand{\udk}[1]{\small\textup{\ifthenelse{\theLANG=0}{UDC #1 }{УДК #1 }}}
+
+\newcommand{\msc}[1]{MSC: #1 }
+
+\pagestyle{myheadings}
+
+\newcommand{\CopyName}[1]{#1}
+\newcommand{\CopyNameCopy}[1]{#1}
+\newcommand{\CopyNameRus}[1]{#1}
+\newcommand{\CopyNameEng}[1]{#1}
+\newcommand{\CopyNameUkr}[1]{#1}
+\newcommand{\WorkPlace}[1]{\small{#1}}
+\newcommand{\tit}[1]{#1}
+\newcommand{\TitEng}[1]{#1}
+\newcommand{\TitUkr}[1]{#1}
+\newcommand{\TitRus}[1]{#1}
+\newcommand{\ShortTit}[1]{#1}
+\newcommand{\Thanks}[1]{\small{#1}}
+
+\newcommand{\footreceived}{\footnotesize\textit{
+	\ifthenelse{\theLANG=0}
+		{Received \received}
+		{\ifthenelse{\value{LANG}=1}
+			{Надійшла \received}
+			{Получена \received}}}}
+
+
+\newcommand{\AbstractUkr}[1]{#1}
+\newcommand{\AbstractRus}[1]{#1}
+\newcommand{\AbstractEng}[1]{#1}
+
+\newcommand{\makemytitle}{
+	\noindent
+	\udk{}
+	\begin{flushleft} 
+		\noindent\textbf{\CopyName} \\ 
+		\WorkPlace \\ 
+		\vspace{4mm} 
+		{\bf \tit} 
+		\vspace{4mm}\\ 
+		\Thanks 
+	\end{flushleft}
+	\addcontentsline{tocua}{subsection}{\protect\ifthenelse{\theLANG=1}
+		{\textit{\CopyNameUkr} \textrm{\TitUkr}}
+		{\protect\ifthenelse{\theLANG=2}
+			{\textit{\CopyNameRus} \textrm{\TitRus}}
+			{\textit{\CopyNameEng} \textrm{\TitEng}}}}
+	\addcontentsline{tocen}{subsection}{\textit{\CopyNameEng} \textrm{\TitEng}}
+}
+
+\newcommand{\TitleAbstract}{\noindent\ifthenelse{\value{LANG}=0}
+	{{\footnotesize\begin{English}
+		\AbstractEng\\
+		\textit{\msc{}.}
+		\textit{\KeyWords.}
+	\end{English}\bigskip}}
+	{\ifthenelse{\value{LANG}=1}{{\footnotesize\begin{Ukrainian}
+					\AbstractUkr\\
+					\textit{\msc{}.}
+					\textit{\KeyWordsUkr.}
+                                      \end{Ukrainian}\bigskip}}
+				    {{\footnotesize\begin{Russian}
+					\AbstractRus\\
+					\textit{\msc{}.}
+					\textit{\KeyWordsRus.}
+				      \end{Russian}\bigskip}}}}
+
+\newcommand{\AuxAbstract}{\ifthenelse{\value{LANG}=0}
+	{{\footnotesize\begin{Ukrainian}
+		\noindent\textit{\CopyNameUkr}\\
+		\textsc{\TitUkr}\medskip
+
+		\noindent\textit{Резюме}\medskip
+
+		\noindent\AbstractUkr
+		\textit{\KeyWordsUkr.}
+		\end{Ukrainian}\\\bigskip
+
+	 \begin{Russian}
+		\noindent\textit{\CopyNameRus}\\
+		\textsc{\TitRus}\medskip
+
+		\noindent\textit{Резюме}\medskip
+
+		\noindent\AbstractRus
+		\textit{\KeyWordsRus.} 
+         \end{Russian}\medskip}}
+	{\ifthenelse{\value{LANG}=1}{{\footnotesize\begin{Russian}
+					\noindent\textit{\CopyNameRus}\\
+					\textsc{\TitRus}\medskip
+
+					\noindent\textit{Резюме}\medskip
+
+					\noindent\AbstractRus
+					\textit{\KeyWordsRus.} 
+				     \end{Russian}\\\bigskip
+
+				     \begin{English}
+					\noindent\textit{\CopyNameEng}\\
+					\textsc{\TitEng}\medskip
+
+					\noindent\textit{Summary}\medskip
+
+					\noindent\AbstractEng
+					\textit{\KeyWords.} 
+				     \end{English}\medskip}}
+				     {{\footnotesize\begin{Ukrainian}
+					\noindent\textit{\CopyNameUkr}\\
+					\textsc{\TitUkr}\medskip
+
+					\noindent\textit{Резюме}\medskip
+
+					\noindent\AbstractUkr
+					\textit{\KeyWordsUkr.} 
+                                      \end{Ukrainian}\\\bigskip
+
+				     \begin{English}
+					\noindent\textit{\CopyNameEng}\\
+					\textsc{\TitEng}\medskip
+
+					\noindent\textit{Summary}\medskip
+
+					\noindent\AbstractEng
+					\textit{\KeyWords.} 
+   				     \end{English}\medskip}}}}
+
+\newcommand{\TitleAbstractHronicle}{\noindent\ifthenelse{\value{LANG}=0}
+	{{\footnotesize\begin{English}
+		\AbstractEng\\
+	\end{English}\bigskip}}
+	{\ifthenelse{\value{LANG}=1}{{\footnotesize\begin{Ukrainian}
+					\AbstractUkr\\
+                                      \end{Ukrainian}\bigskip}}
+				    {{\footnotesize\begin{Russian}
+					\AbstractRus\\
+				      \end{Russian}\bigskip}}}}
+
+\newcommand{\AuxAbstractHronicle}{\ifthenelse{\value{LANG}=0}
+	{{\footnotesize\begin{Ukrainian}
+		\noindent\textit{\CopyNameUkr}\\
+		\textsc{\TitUkr}\medskip
+
+		\noindent\textit{Резюме}\medskip
+
+		\noindent\AbstractUkr
+		\end{Ukrainian}\\\bigskip
+
+	 \begin{Russian}
+		\noindent\textit{\CopyNameRus}\\
+		\textsc{\TitRus}\medskip
+
+		\noindent\textit{Резюме}\medskip
+
+		\noindent\AbstractRus
+         \end{Russian}\medskip}}
+	{\ifthenelse{\value{LANG}=1}{{\footnotesize\begin{Russian}
+					\noindent\textit{\CopyNameRus}\\
+					\textsc{\TitRus}\medskip
+
+					\noindent\textit{Резюме}\medskip
+
+					\noindent\AbstractRus
+				     \end{Russian}\\\bigskip
+
+				     \begin{English}
+					\noindent\textit{\CopyNameEng}\\
+					\textsc{\TitEng}\medskip
+
+					\noindent\textit{Summary}\medskip
+
+					\noindent\AbstractEng
+				     \end{English}\medskip}}
+				     {{\footnotesize\begin{Ukrainian}
+					\noindent\textit{\CopyNameUkr}\\
+					\textsc{\TitUkr}\medskip
+
+					\noindent\textit{Резюме}\medskip
+
+					\noindent\AbstractUkr
+                                      \end{Ukrainian}\\\bigskip
+
+				     \begin{English}
+					\noindent\textit{\CopyNameEng}\\
+					\textsc{\TitEng}\medskip
+
+					\noindent\textit{Summary}\medskip
+
+					\noindent\AbstractEng
+   				     \end{English}\medskip}}}}
+
+\newcommand{\KeyWords}[1]{\\ \textbf{ Key words:\ }#1}
+\newcommand{\KeyWordsRus}[1]{\\ \textbf{ Ключевые слова: \ }#1}
+\newcommand{\KeyWordsUkr}[1]{\\ \textbf{ Ключові слова: \ }#1}
+
+\newcommand{\NAME}{\CopyNameCopy}
+\newcommand{\rightheadtext}{\ShortTit}
+
+\newcommand{\Pages}{\thepage-\lpage}
+
+\newcommand{\VolVypPages}{\ifthenelse{\theLANG=0}
+	{ISSN 2519-206X. Researches in Mathematics and Mechanics. -- 9999.\! -- V. 99, Is. 9.\! -- P. 9--99}
+	{ISSN 2519-206X. Дослідження в математиці і механіці.\! -- 9999.\! -- Т. 99, вип. 9.\! -- С. 9--99}}
+
+\renewcommand{\@evenhead}%
+             {\vbox{\hbox to \textwidth{\strut\footnotesize \ifthenelse{\value{prepage}=0}%
+             {\hfil \textit \VolVypPages \hfil}{\thepage \hfil \textit{\leftmark} \hfil}} \hrule }}
+
+\renewcommand{\@oddhead}%
+             {\vbox{\hbox to \textwidth{\strut\footnotesize\ifthenelse{\value{prepage}=0}%
+             {\hfil \textit \VolVypPages \hfil}{\hfil \textit \rightmark \hfil \thepage}} \hrule }}
+
+\renewcommand{\@oddfoot}%
+             {\ifthenelse{\value{prepage}=0}{\baselineskip2pc \hbox to\hsize{\hfil\copyright\,\footnotesize\CopyNameCopy, 9999} \refstepcounter{prepage}}%
+             {\hfil\refstepcounter{prepage}}}
+
+\renewcommand{\@evenfoot}%
+             {\ifthenelse{\value{prepage}=0}{\baselineskip2pc \hbox to\hsize{\hfil\copyright\,\footnotesize\CopyNameCopy, 9999} \refstepcounter{prepage}}%
+             {\hfil\refstepcounter{prepage}}}
+
+\newcommand{\Introduct}{\medskip{\textsc{\textbf{\ifthenelse{\theLANG=0}{Introduction.\ }
+	{\ifthenelse{\theLANG=1}{Вступ.\ }{Введение.\ }}}}}}
+                                   
+\newcommand{\MainResults}{\medskip\textsc{\textbf{\ifthenelse{\theLANG=0}{Main Results.\ }
+           {\ifthenelse{\theLANG=1}{Основні результати.\ }{Основные результаты.\ }}}}}
+
+\newcommand{\MainResultsWithoutPeriod}{\medskip\textsc{\textbf{\ifthenelse{\theLANG=0}{Main Results}
+           {\ifthenelse{\theLANG=1}{Основні результати}{Основные результаты}}}}}
+
+\newcommand{\Notation}{\vskip0.5cm\medskip{\sc{\textbf{\ifthenelse{\theLANG=0}{Notation.\ }
+	   {\ifthenelse{\theLANG=1}{Позначення.\ }{Обозначения.\ }}}}}}
+
+\newcommand{\Aux}{\vskip0.5cm\medskip\textsc{\textbf{\ifthenelse{\theLANG=0}{Auxiliary arguments.\ }
+           {\ifthenelse{\theLANG=1}{Попередні результати.\ }{Предварительные результаты.\ }}}}}
+
+\newcommand{\Conclusion}{\medskip\textsc{\textbf{\ifthenelse{\theLANG=0}{Conclusion.\ }
+           {\ifthenelse{\theLANG=1}{Висновки.\ }{Заключение.\ }}}}}
+
+\newcommand{\refnam}{}  
+\renewcommand{\@biblabel}[1]{#1.\hfill}
+
+\newtheorem{theorem}{\indent\ifthenelse{\value{LANG}=0}{Theorem}{Теорема}}
+\newtheorem*{theorem*}{\indent\ifthenelse{\value{LANG}=0}{Theorem}{Теорема}}
+
+\newtheorem{lemma}{\indent\ifthenelse{\value{LANG}=0}{Lemma}{\ifthenelse{\value{LANG}=1}{Лема}{Лемма}}}
+\newtheorem*{lemma*}{\indent\ifthenelse{\value{LANG}=0}{Lemma}{\ifthenelse{\value{LANG}=1}{Лема}{Лемма}}}
+
+\newtheorem{consequence}{\indent\ifthenelse{\value{LANG}=0}{Consequence}{\ifthenelse{\value{LANG}=1}{Наслідок}{Следствие}}}
+\newtheorem*{consequence*}{\indent\ifthenelse{\value{LANG}=0}{Consequence}{\ifthenelse{\value{LANG}=1}{Наслідок}{Следствие}}}
+
+\renewcommand{\proof}{\indent\textbf{\ifthenelse{\value{LANG}=0}{Proof. }{\ifthenelse{\value{LANG}=1}{Доведення. }{Доказательство. }}}}
+           
+\newtheorem{definition}{\indent\ifthenelse{\value{LANG}=0}{Definition}{\ifthenelse{\value{LANG}=1}{Означення}{Определение}}}
+\newtheorem*{definition*}{\indent\ifthenelse{\value{LANG}=0}{Definition}{\ifthenelse{\value{LANG}=1}{Означення}{Определение}}}
+
+\newtheorem{remark}{\indent\ifthenelse{\value{LANG}=0}{Remark}{\ifthenelse{\value{LANG}=1}{Зауваження}{Замечание}}}
+\newtheorem*{remark*}{\indent\ifthenelse{\value{LANG}=0}{Remark}{\ifthenelse{\value{LANG}=1}{Зауваження}{Замечание}}}
+
+\newtheorem{example}{\indent\ifthenelse{\value{LANG}=0}{Example}{\ifthenelse{\value{LANG}=1}{Приклад}{Пример}}}
+\newtheorem*{example*}{\indent\ifthenelse{\value{LANG}=0}{Example}{\ifthenelse{\value{LANG}=1}{Приклад}{Пример}}}
+
+\newcommand{\received}[1]{\footnotesize{\vspace{1em}\ifthenelse{\theLANG=0}{Received }{\ifthenelse{\value{LANG}=1}{Надійшла }{Получена }} #1}\hfill}

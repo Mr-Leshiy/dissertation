@@ -1,0 +1,443 @@
+\documentclass[11pt, twoside]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{bold-extra}
+\usepackage{ifthen}
+
+\usepackage{rmmstyle}
+
+\renewcommand{\CopyName}{O.~V.~Pozhylenkov}
+\renewcommand{\CopyNameCopy}{Pozhylenkov O. V.}
+\renewcommand{\udk}{\small\textup{UDC 532.3}}
+\renewcommand{\msc}{{MSC:  74G70, 74H99, 74J10}}
+\renewcommand{\CopyNameUkr}{Пожиленков О. В.}
+\renewcommand{\CopyNameEng}{Pozhylenkov O. V.}
+\renewcommand{\CopyNameRus}{Пожиленков А. В.}
+\renewcommand{\WorkPlace}{\small{ Department of Mathematics, Physics and IT, Odesa Mechnikov University, Dvoryanska str.2, 65082, Odesa, Ukraine }}
+\renewcommand{\tit}{% Original title of your paper (CAPITAL LETTERS)
+	THE STRESS STATE OF A RECTANGULAR ELASTIC DOMAIN
+}
+\renewcommand{\TitUkr}{
+	Напружений стан прямокутної пружної області
+}	
+\renewcommand{\TitEng}{
+	The stress state of a rectangular elastic domain
+}
+\renewcommand{\TitRus}{
+	Напряженное состояние прямоугольной упругой области
+}
+\renewcommand{\ShortTit}{% Shortened title of your paper (no more then 40 symbols)
+	The stress state of a rectangular elastic domain
+}
+\renewcommand{\Thanks}{\small{% Acknowledgments, sources of funding, presentation of the results
+}}			     
+\renewcommand{\AbstractUkr}{% Abstract of the paper in Ukrainian, at least 100 words
+У запропонованій роботі досліджена і розв`язана задача про напружений стан прямокутної пружної області. За допомогою інтегрального перетворення Фур'є в просторі трансформант отримана одновимiрна векторна крайова задача. Компоненти шуканого вектора є трансформанти перемiщень. Отримана крайова задача розв`язана точно за допомогою методу матричного диференціального числення, фундаментальний розв’язок представлений як інтеграл по замкнутому контуру, який, в свою чергу, був знайдений з використанням теореми про лишки. Отримана алгебраїчна система відносно невідомих коефіцієнтів була розв’язана шляхом використання методу Крамера. Остаточні розрахункові формули для поля перемiщень і напружень побудовані шляхом застосування оберненого перетворення Фур'є. Дослiджено поля перемiщень та напружень для різних видів навантаження і розмірів прямокутної області.
+}
+\renewcommand{\AbstractEng}{% Abstract of the paper in English, at least 100 words
+	The problem of the stress state of a rectangular elastic domain is investigated and solved exactly. With the help of Fourier transformation the one-dimensional vector boundry problem in the transformation`s domain is obtained. The components of the unknows vector are the displacement transformations. The problem is solved exactly with the methods of the matrix differential calculations, the fundamental solution matrix is constructed in the form of the contour integral, which is found using the residue theorem. The constructed vector is inversed by the corresponding formulas of inverse Fourier series. The numerical investigation of the stress in dependence of the external loading value and domain`s size is presented.
+}
+\renewcommand{\AbstractRus}{% Abstract of the paper in Russian, at least 100 words
+В предложенной работе исследована и решена задача о напряженном состоянии прямоугольной упругой области. С помощью интегрального преобразования Фурье в пространстве трансформант получена одномерная векторная краевая задача. Компоненты вектора представляют собой трансформанты смещений. Полученная краевая задача решена точно с помощью метода матричного дифференциального исчисления, фундаментальное решение представлено в виде интеграла по замкнутому контуру, который в свою очередь был найден используя теорему о вычетах. Полученная алгебраическая система относительно неизвестных коэффициентов, была решена путем использования метода Крамера.  Окончательные расчетные формулы для поля смещений и напряжений построены путем применения обратного преобразования Фурье. Представлены численные исследования поля смещения и напряжений для разных видов нагрузки и размеров прямоугольной области.
+}
+\renewcommand{\KeyWordsUkr}{\\ {Ключові слова: \ }
+	мiшана задача пружностi, точний розв`язок, прямокутна область, векторна крайова задача, фундаментальна матриця
+		\vspace{-0.1cm}
+}
+\renewcommand{\KeyWords}{\\ {Key words: \ }
+	mixed boundary problem, exact solution, rectangular domain, vector boundary problem, fundamental matrix
+}
+\renewcommand{\KeyWordsRus}{\\ {Ключевые слова: \ }
+	смешанная задача упругости, точное решение, прямоугольная область, векторная краевая задача, фундаментальная матрица
+	\vspace{-0.5cm}
+}
+\setcounter{firstpage}{\thepage}
+
+\markboth{{\NAME}}{{\rightheadtext}}
+
+\setcounter{LANG}{0}
+
+\begin{document}
+	
+\makemytitle
+
+\Introduct
+The problem of a rectangular domain stress estimation is not a new one, nevertheless a lot of unsolved issues remain. This problem was considered and solved in the different statements important to the engeneering applications as with the help of analytical methods so and with numerical ones. To the last direction one can reference the papers, where the boundary element-free method (BEFM) was applied to two dimensional problems of elasticity. This method is a direct numerical method which combines the boundary integral equation method and an improved moving least-square approximation. This method, as it was stated at \cite{Liew}, gives the higher computational accuracy. Another popular solving methods are well known finite element methods. For example, at \cite{Oden} the discussion of the condition`s type necessary for the penalty methods to provide a basis for the stable and convergent finite element schemes is proposed. In paper \cite{Dongyang} was considered the mixed finite element (for short MFE) approximation of a
+stress-displacement system derived from the Hellinger-Reissner variational principle for the
+linear elasticity problem. Many benefits of the numerical methods can be attributed by their existence at many numerical software applications, easy for using by the engineers.
+
+But if one need to provide the calculation of the stress at the rectangular domain in the neighborhood of the angular points, the numerical methods lose their efficiency as it is known. These points of the boundary condition changing cause the stress with a special order of a singularity. To take these singularities in the considaration, to propose the method which solve a problem for a rectangular domain with regard of such singularities existence, one must use the analytical approaches \cite{Shyam}.
+
+The world known papers of Konrat`ev and Maz`ya \cite{Kondrat`ev, Maz`ya} are connected with the investigation of singularities at the angular points of an elastic domain. Also the well known paper \cite{Vihak} was one of the pioneer papers in this direction. The solution of the plane thermoelasticity problem for a rectangular domain was constructed with the help of new solving method. This method permits the construction of an analytical solution, corresponding to Saint-Venan principle in the form of trigonometric series expansion using orthogonal set of the eigenfunctions and associated functions. These investigations were successfully continued by \cite{Tokovyy}.
+
+In paper \cite{Dhaba} a simple method to solve a static, plane boundary value problem of elasticity for an isotropic rectangular region was introduced. The method is based on finite Fourier transform transfering the biharmonic equation to a nonhomogeneous ordinary differential equation of the fourth order. Another analytical method of the plane two dimensional problem solving for a rectangular domain was proposed at the papers Prof G. Popov \cite{Popov1, Procerov}. At the paper \cite{Popov2} the method of solving the plane mixed boundary value problem of elasticity on a rectangular domain was proposed. The problem of current paper is solved exactly with the method of the matrix differential calculations, this method was succesfully applied in the paper \cite{Zhuravleva}. The constructed vector in transform`s domain is inversed by the corresponding formulas of inverse Fourier transform, so the displacements exspressions are found in the form of Fourier series. The numerical investigation of the stress in dependence on the external loading value and domain`s size is presented.
+
+The novelty of the presented paper is in the application of the new approach \cite{Popov3} to the solving of the elasticity problem for a rectangular domain. The stress state of a domain was investigated depending on a load properties and domain size.
+
+\textbf{1. Statement of the problem.}
+
+\includegraphics{images/image1}
+
+The elastic rectangular domain $0<x<a$, $0<y<b$ ($G$ is a shear modulus, $\mu$ is a Poison`s coefficient, $E$ is a Young's modulus) meets a load at the upper face of the domain
+
+\begin{equation}
+\sigma_y(x,b) = -p(x), \quad \tau_{xy}(x,b)=0
+\end{equation}
+
+The lower base conditions are fulfilled at the bottom edge:
+
+\begin{equation}
+u_y(x,0)=0, \quad \tau_{xy}(x,0)=0
+\end{equation}
+
+The left and the right side are conditions of ideal contact
+\begin{align}
+u_x(0,y) = 0, &\quad \tau_{xy}(o,y)=0 \nonumber \\ 
+u_x(a,y) = 0, &\quad \tau_{xy}(a,y)=0
+\end{align}
+
+It is required to estimate the stress state of the rectangular domain $0<x<a$, $0<y<b$ satisfying the boudnary conditions (1)-(3) and the equilibrium equations \cite{Nowacki} 
+\begin{align}
+U^{''}(x,y)+U^{**}(x,y)+ & \mu_0(U^{''}(x,y)+V^{'*}(x,y)) = 0 \nonumber \\
+V^{''}(x,y)+V^{**}(x,y)+ & \mu_0(V^{**}(x,y)+U^{'*}(x,y)) = 0
+\end{align}
+
+Here the denotes are taken $U(x,y)=u_x(x,y), \quad V(x,y)=u_y(x,y), \quad f^{'}(x,y) = \frac{\partial{f(x,y)}}{\partial{x}}, \quad  f^{*}(x,y) = \frac{\partial{f(x,y)}}{\partial{y}}, \quad \mu_0=\frac{1}{1-2\mu}$
+
+\textbf{2. The problem solving}
+
+The Fourier`s transforms are applied to the equations (4) with the scheme
+\begin{equation}
+\begin{pmatrix}
+U_n(y) \\
+V_n(y)
+\end{pmatrix} = \int_0^a{
+\begin{pmatrix}
+U(x,y)*\sin(\alpha_n x) \\
+V(x,y)*\cos(\alpha_n x)
+\end{pmatrix}dx}, \quad \alpha_n = \frac{\pi n}{a}
+\end{equation}
+
+It leads to the homogeneous system of the ordinary differential equations in the transform`s domain
+
+\begin{align}
+U^{''}_{n}(y)+(-\alpha_n^2-\mu_0\alpha_n^2)U_n(y)-\mu_0\alpha_n V^{'}_{n}(y) &=0 \nonumber \\
+V^{''}_{n}(y)(1+\mu_0)-\alpha_n^2 V_n(y)+\mu_0\alpha_n U^{'}_{n}(y) &=0
+\end{align}
+
+Boundary conditions (1), (2) are reformulated in the terms of the displacements
+
+\begin{align}
+U^{'}_{n}(0)=0, &\quad V_{n}(0)=0 \nonumber \\
+\alpha_{n} V_{n}(b) - U^{'}_{n}(b)=0, &\quad (2G+\lambda) V^{'}_{n}(b)+\lambda\alpha_{n} U_{n}(b)=0
+\end{align}
+where $\lambda = \frac{\mu E}{(1+\mu)(1-2\mu)}, \quad p_n = \int_{0}^{a}{p(x)\cos(\alpha_{n}x)dx}$.
+
+To formulate the vector boundary state problem the vectors and matrices are introduced
+
+\begin{align*}
+A=
+\begin{pmatrix}
+1 & 0 \\
+0 & 1 + \mu_0
+\end{pmatrix}, &\quad 
+B=
+\begin{pmatrix}
+0 & -\alpha_{n}\mu_{0} \\
+\mu_{0}\alpha_{n} & 0
+\end{pmatrix}, \\
+C=
+\begin{pmatrix}
+(-\alpha_{n}^{2}-\mu_{0}\alpha_{n}^{2}) & 0 \\
+0 & -\alpha_{n}^{2}
+\end{pmatrix}, &\quad 
+Z_{n}(y)=
+\begin{pmatrix}
+U_{n}(y)\\
+V_{n}(y)
+\end{pmatrix}, \\
+D_{1}=
+\begin{pmatrix}
+1 & 0 \\
+0 & (2G + \lambda)
+\end{pmatrix}, &\quad
+E_1=
+\begin{pmatrix}
+0 & -\alpha_n \\
+\alpha_n\lambda & 0
+\end{pmatrix}, \\
+D_{2}=
+\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}, &\quad
+E_{2}=
+\begin{pmatrix}
+0 & -\alpha_n \\
+0 & 1
+\end{pmatrix}, \\
+f_{1}=
+\begin{pmatrix}
+0 \\
+-p_n
+\end{pmatrix}, &\quad
+f_{2}=
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix}
+\end{align*}
+With the help of the introduced matrices, the differential operator of the second order is constructed
+\begin{equation}
+L_{2}(Z_{n}(y))=AZ^{''}_{n}(y)+BZ^{'}_{n}(y)+CZ_{n}(y)
+\end{equation}
+The vector boundary problem in the transform`s domain is formulated with the help of the introduced operator (8)
+\begin{align}
+L_{2}(Z_{n}(y))&=0 \nonumber \\
+U_{i}(Z_{n}(y))&=f_{i}, \quad i=1,2
+\end{align}
+Here $U_{i}(Z_{n}(y))=D_{i}Z^{'}_{n}(y)+E_{i}Z_{n}(y), \quad b_1=0,\quad b_2=b$
+
+To solve this vector boundary problem the fundamental solution matrix $Y(y)$ is constructed.
+To found it firstly the matrix $e^{\xi y}I$ (where $I$ the unit matrix ) must be substituted into the equation (9). From the equality $L_{2}(e^{\xi y}I)=M(\xi)e^{\xi y}$ one can derive the $M(\xi)$ matrix
+\begin{equation}
+M(\xi)
+\begin{pmatrix}
+\xi^{2}-\alpha_{n}^{2}-\mu_{0}\alpha_{n}^{2} & -\xi\alpha_{n}\mu_{0} \\
+\xi\mu_{0}\alpha_{n} & \xi^{2}+\xi{2}\mu_{0}-\alpha_{n}^{2}
+\end{pmatrix}
+\end{equation}
+The fundamental solution is found with help of formula $Y(y)=\frac{1}{2\pi i}\oint_{C}{e^{\xi y}M^{-1}(\xi)d\xi}$ \cite{Gantmaher}. The calculation of the integral requires to know all poles of the under integral function. To do it the determinant of the matrix $M(\xi)$ was found $$detM(\xi)=(1+\mu_0)(\xi-\alpha_n)^{2}(\xi+\alpha_n)^{2}$$
+After contour integration procedure the two linear independent solutions of the matrix equation were derived
+\begin{align}
+Y(y)&=\frac{2\pi i}{2\pi i (1+\mu_0)}\sum_{i=0}^{N}{Res[e^{\xi y}M^{-1}(\xi)]}, \quad (N - number \; of \; poles) \nonumber \\
+Y(y)&=\frac{1}{1+\mu_0}(Y_{0}(y)+Y_{1}(y)) \nonumber \\
+Y_0(y)&=\frac{e^{\alpha_{n}y}}{4\alpha_{n}}
+\begin{pmatrix}
+y\alpha_{n}\mu_{0}+2+\mu_{0} & y\alpha_{n}\mu_{0} \\
+-y\alpha_{n}\mu_{0} & -y\alpha_{n}\mu_{0}+2+\mu_{0}
+\end{pmatrix} \nonumber \\
+Y_1(y)&=\frac{e^{-\alpha_{n}y}}{4\alpha_{n}}
+\begin{pmatrix}
+y\alpha_{n}-2-\mu_{0} & -y\alpha_{n}\mu_{0} \\
+y\alpha_{n}\mu_{0} & -y\alpha_{n}\mu_{0}-2-\mu_{0}
+\end{pmatrix}
+\end{align}
+The solution of homogeneous vector equation was constructed
+\begin{equation}
+Z_{n}(y)=Y_{1}(y)
+\begin{pmatrix}
+C_1 \\
+C_2
+\end{pmatrix}
++Y_{2}(y)
+\begin{pmatrix}
+C_3 \\
+C_4
+\end{pmatrix}
+\end{equation}
+Applying the boundary conditions $U_{i}(Z_{n}(y))=f_{i}, \; i=1,2$ one obtains the linear algebraic system from which the constants $C_i, \; i=\overline{1,4}$ can be found
+\begin{equation}
+\begin{split}
+C_{1}e^{\alpha_{n}b}(2b\alpha_{n}^{2}\mu_{0}+2\alpha_{n}\mu_{0}+2\alpha_{n}) + C_{2}e^{\alpha_{n}b}(2b\alpha_{n}^{2}\mu_{0}-2\alpha_{n})+\\+C_{3}e^{-\alpha_{n}b}(-2b\alpha_{n}^{2}\mu_{0}+2\alpha_{n}+2\alpha_{n}\mu_{0})+C_{4}e^{-\alpha_{n}b}(2b\alpha_{n}^{2}\mu_{0}+2\alpha_{n})=0
+\end{split} \nonumber
+\end{equation}
+\begin{equation}
+\begin{split}
+C_{1}e^{\alpha_{n}b}(-2Gb\alpha_{n}^{2}\mu_{0}-2G\alpha_{n}\mu_{0}+2\lambda\alpha_{n}) + C_{2}e^{\alpha_{n}b}(-2Gb\alpha_{n}^{2}\mu_{0}+(2G+\lambda)2\alpha_{n}) +\\+ C_{3}e^{-\alpha_{n}b}(-2Gb\alpha_{n}^{2}\mu_{0}+2G\alpha_{n}\mu_{0}-2\lambda\alpha_{n})+C_{4}e^{\alpha_{n}b}(2Gb\alpha_{n}^{2}\mu_{0}+(2G+\lambda)2\alpha_{n})=\\=-p_{n}4\alpha_{n}(1+\mu_{0})
+\end{split} \nonumber
+\end{equation}
+\begin{equation}
+\begin{split}
+C_{1}(2\alpha_{n}+2\alpha_{n}\mu_{0})+C_{2}(-2\alpha_{n})+C_{3}(2\alpha_{n}+2\alpha_{n}\mu_{0})+C_{4}(2\alpha_{n})=0
+\end{split} \nonumber
+\end{equation}
+\begin{equation}
+\begin{split}
+C_{2}(2+\mu_{0})+C_{4}(-2-\mu_{0})=0
+\end{split} \nonumber
+\end{equation}
+The application of the inverse Furier`s formula finalizes the stated problem`s solution
+\begin{equation}
+U(x,y)=\frac{2}{a}\sum_{n=1}^{\infty}{U_{n}(y)\sin{\alpha_{n}x}}, \quad V(x,y)=\frac{V_0(y)}{a}+\frac{2}{a}\sum_{n=1}^{\infty}{V_{n}(y)\cos{\alpha_{n}x}}
+\end{equation}
+
+The last step is to find the term $V_0(y)$ as a special case, which can be derived from the boundary problem: 
+\begin{align}
+V_{0}^{''}(y)&=0, \quad 0<y<b \nonumber \\
+V_{0}^{'}(b)&=-p_{0}/(2G+\lambda),\quad V_{0}(0)=0
+\end{align}
+
+After it (15) solving the formulas (14) are rewritten at the form:
+\begin{equation}
+U(x,y)=\frac{2}{a}\sum_{n=1}^{\infty}{U_{n}(y)\sin{\alpha_{n}x}}, \quad V(x,y)=\frac{-p_{0}y}{(2G+\lambda)a}+\frac{2}{a}\sum_{n=1}^{\infty}{V_{n}(y)\cos{\alpha_{n}x}}
+\end{equation}
+
+\textbf{2. Numerical results.}
+
+There are presented some numerical results for different loads and domain size.
+
+Displasments $U(x,y)$ and $V(x,y)$ are shown at the Fig. 1-4 correspondigly for the external load $p(x)=(x-2.5)^2$. At the Fig. 1, Fig. 3 and Fig. 2, Fig. 4 the displacements are presented for the $0<x<5, \quad 0<y<6$ and $0<x<10, \quad 0<y<15$ correspondigly.
+
+\begin{figure}[H]
+	\begin{minipage}{0.6\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/Figure_1}
+		\caption*{Fig. 1. $U(x,y)$}
+	\end{minipage}\hfill
+	\begin{minipage}{0.6\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/Figure_3}
+		\caption*{Fig. 2. $U(x,y)$}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{minipage}{0.6\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/Figure_2}
+		\caption*{Fig. 3. $V(x,y)$}
+	\end{minipage}\hfill
+	\begin{minipage}{0.6\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/Figure_4}
+		\caption*{Fig. 4. $V(x,y)$}
+	\end{minipage}
+\end{figure}
+It can be seen that with the increasing of the domain size the value of the displacements increasing too. Distribution pattern of the displacements are changed, which can be seen on Fig. 1 and Fig. 2.
+for the displacement $U(x,y)$ and on Fig. 3, Fig. 4 for the displacement $V(x,y)$.
+
+Stresses $\sigma_{x}(x,y)$ and $\sigma_{y}(x,y)$ are shown at the Fig. 5-8 correspondigly for the external load $p(x)=(x-2.5)^2$. At the Fig. 5, Fig. 7 and Fig. 6, Fig. 8 the stresses are presented for the $0<x<5, \quad 0<y<6$ and $0<x<10, \quad 0<y<15$ correspondigly.
+
+\begin{figure}[H]
+	\begin{minipage}{0.6\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/Figure_5}
+		\caption*{Fig. 5. $\sigma_{x}(x,y)$}
+	\end{minipage}\hfill
+	\begin{minipage}{0.6\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/Figure_6}
+		\caption*{Fig. 6. $\sigma_{x}(x,y)$}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{minipage}{0.6\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/Figure_7}
+		\caption*{Fig. 7. $\sigma_{y}(x,y)$}
+	\end{minipage}\hfill
+	\begin{minipage}{0.6\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/Figure_8}
+		\caption*{Fig. 8. $\sigma_{y}(x,y)$}
+	\end{minipage}
+\end{figure}
+One can see that the changes are similar to the displacement`s changes.
+
+Investigation was also made for the another external load function, but in this paper they are not presented because of the similar pattern of the dependencies.
+
+\Conclusion
+
+The proposed method was applied to solve the boundary stress state problem of the elastic rectangular domain. The exact solution of the stated problem was derived. The displacments and stersses were investigateted for the different domain sizes and external load functions.
+
+The future development is to solve the stress state problem for the rectangular domain with the boundary conditions of the first main elasticity problem.
+
+\AuxAbstract
+
+\renewcommand{\refname}{\indent\normalsize\textsc{References}}
+
+{\footnotesize
+\begin{thebibliography}{99}
+\bibitem{Liew}
+{Liew K. M., Yuming Cheng, Kitipornchai S. (2005) Boundary elemnt-free method (BEFM) and application to two dimensional elasticity problems.
+{\it International journal for Numerical Methods in Engineering.}
+Vulume 65, Issue 8.}
+
+\bibitem{Oden}
+{Oden J. T., Kikuchi N. (1982) Finite element methods for constrained problems in elasticity.
+{\it International journal for Numerical Methods in Engineering.}
+Volume 18, Issue 5.}
+
+
+\bibitem{Dongyang}
+{ Dongyang Shi, Minghao Li, (2014) Superconvergence analysis of the stable conforming rectangular mixed finite elements for the linear elasticity problem
+{\it Journal of Computational Mathematics.}
+Volume 32, Number 2, pp. 205-214.
+}
+
+\bibitem{Shyam}
+{Shyam N. Prasad,  Sailendra N. Chatterjee (1973) Some mixed boundary value problems of elasticity in a rectangular domain.
+{\it International journal of Solids and Structures.}
+Volume 9, Issue 10, pp. 1193-1210.}
+
+\bibitem{Kondrat`ev}
+{V. A. Kondrat`ev (1967) Boundary value problems for eliptic equations in domains with conical or angular points.
+{\it Tr. Mosk. Mat. Obs.}
+Volume 16, pp. 209-292.}
+
+
+\bibitem{Maz`ya}
+{V. G. Maz`ya, B. A. Plamenevskii (1974) On the coefficients in the asymptotics of solutions of eliptic boundary- value problems near conical points.
+{\it Dokl. Akad, Nauk SSSR.}
+Volume 219, Number 2, pp. 286-289.}
+
+\bibitem{Vihak}
+{Vihak V. M., Yuzvyak N. Y., Yasinskij A. V. (1998) The solution of the plane thermoelasticity problem for a rectangular domain.
+{\it Journal of Thermal Stresses.}
+ Volume 21, Issue 5.}
+
+\bibitem{Tokovyy}
+{Vihak V. M., Tokovyy Yu. (2002) Construction elementary solutions of the elasticity plane problem for the rectangular domain.
+{\it International applied mechanics.}
+Volume 32, Issue 7, pp. 79-87.}
+
+\bibitem{Dhaba}
+{El Dhaba, A. R.; Abou-Dina, M. S.; Ghaleb, A. F. (2015) Deformation for a Rectangle by a Finite Fourier Transform.
+{\it Journal of Computational and Theoretical Nanoscience,}
+Volume 12, Number 1, pp. 31-37(7).
+}
+
+\bibitem{Popov1}
+{Popov G., (1982) The elastic stress concentration around dies, cuts, thin, inclusions and reinforcements (in Russian), Nauka, Moscow.}
+
+\bibitem{Procerov}
+{Popov G. Ya., Protserov Yu. S. (2016) Axisymmetric problem for an elastic cylinder of finite length with fixed lateral surface with regard for its weight.
+{\it J. Math. Sci.} Volume 212, No. 1., pp. 67-82.}
+
+\bibitem{Popov2}
+{Popov G., Vaysfeld N., Zozulevich B. (2014) The exact solution of elasticity mixed plain boundary value problem in a rectangular domain.
+{\it 20-th International Conference Engineering Mechanics.}
+Srvatka, Czech Republic.}
+
+\bibitem{Zhuravleva}
+{Zhuravlova Z. Yu. (2018) Plane mixed problems of elasticity for a semi-infinite strip.
+Odesa I.I. Mechnikov National University, Odesa.}
+
+\bibitem{Popov3}
+{Popov G., Vaysfeld N. (2011) The steady-one oscillations of the elastic infinite come loaded at a vertex by a concentrated force.
+{\it Acta Mechanica.}
+221, Issue 3-4, pp. 261-270.}
+
+\bibitem{Nowacki}
+{Nowacki W. (1970) The theory of elasticity. Panstwowe Wydawnictwo Naukove, Warszawa (in Polish).}
+
+\bibitem{Gantmaher}
+{Gantmakher F. R. (1998) The theory of matrices. AMS Chelsea Publising, Providence, Rohde Island.}
+
+\end{thebibliography}
+}
+
+\end{document}
